@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUEUEING </title>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+       @import url('https://fonts.cdnfonts.com/css/infinite-justice');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000;
+}
+
+        /* NAVBAR------------------------------------------------- */
+        nav {
+            background-color: #F6D400;
+            width: 100vw;
+            height: 1%;
+        }
+
+        nav img {
+            width: 9%;
+            padding: .5%;
+        }
+
+        nav a {
+            color: rgb(58, 58, 62);
+            font-family: Infinite Justice;
+            font-size: 1.5vh;
+            align-items: center;
+            display: flex;
+            text-decoration: none;
+        }
+
+        nav a h1 {
+            font-size: 3.5vh;
+            font-weight: 100;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            text-align: center;
+            height: 80.2vh;
+        }
+
+        /* media------------------------- */
+        .media {
+            height: 85vh;
+        }
+
+        .media-content {
+            height: 100%;
+        }
+
+        .media video {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Queue Ticket No. and Counter ---------*/
+        .queue-header {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            height: 9vh;
+            text-align: center;
+            line-height: 3.4rem;
+        }
+
+        .queue-title {
+            background-color: rgb(21, 24, 72);
+            width: 100%;
+            height: 100%;
+            color: #fff;
+        }
+
+        .queue-title h1 {
+            font-size: 6.3vh;
+            line-height: 10vh;
+        }
+
+        .queue-num {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            height: 17.5vh;
+            margin-bottom: 1vh;
+        }
+
+        .ticket {
+            background-color: #ffffff;
+            width: 100%;
+            height: 17.5vh;
+            margin-bottom: 1.5vh;
+        }
+
+        .counter {
+            background: linear-gradient(-68deg, #F6D400 82%, #ffffff 82%);
+            width: 100%;
+            height: 17.5vh;
+            margin-bottom: 1.5vh;
+        }
+
+        .ticket h1,
+        .counter h1 {
+            font-size: 10vh;
+            font-weight: 800;
+            line-height: 15vh;
+        }
+
+        .ticket p,
+        .counter p {
+            font-size: 3vh;
+            font-weight: 800;
+            line-height: .9vh;
+            color: #423f3f;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            height: 9.2vh;
+            background-color: #c5c5c5;
+            bottom: 0;
+            position: fixed;
+            translate: x;
+        }
+        .footer img{
+            width: 18%;
+            height:70%;
+        }
+        
+        .date-time {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+
+        }
+
+        .date-time-content {
+            background-color: #f5f3f3;
+            width: 100%;
+            line-height: 12vh;
+            z-index: 1;
+        }
+
+        .date-time-content h3 {
+            font-size: 3vh;
+            font-weight: 900;
+            line-height: 9vh;
+            text-align: center;
+            color: #000000;
+
+        }
+
+        .announcement {
+            animation: moveLeftToRight 18s linear infinite;
+            line-height: 10vh;
+            width: 65vw;
+            color: #000000;
+            font-size: 4vh;
+            font-weight: 500;
+            z-index: 0;
+            display: flex;
+        }
+        .announcement p {
+            position: absolute;
+            font-weight: 700;
+        }
+        .announcement img{
+            position: relative;
+            right: 17%;
+            transform: scaleX(-1);
+        }
+
+        /* announcement---------------------------- */
+        @keyframes moveLeftToRight {
+            100% {
+                transform: translateX(-100%);
+            }
+
+            0% {
+                transform: translateX(200%);
+            }
+        }
+
+        /* date and time animation---------------------------- */
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #realTime .time .pulsing-colon {
+            display: inline-block;
+            animation: pulse 1s infinite;
+        }
+
+
+        
+        /* @media only screen and (min-width: 425px) and (max-width: 758px) {
+
+
+        } */
+        @media only screen and (min-width: 320px) and (max-width: 459px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                display: none;
+            }
+
+            nav {
+                height: 6.9vh;
+            }
+            nav img {
+                width: 7vh;
+                margin-top: 1.3vh ;
+            }
+            nav a h1{
+                font-size: 1.6vh;
+                line-height: 1.8vh;
+                margin-top: 1.3vh;
+            }
+            .media {
+            height: 30vh;
+        }
+
+        .queue-title h1 {
+            font-size: 4.8vh;
+            line-height: 10vh;
+        }
+        .ticket h1,
+            .counter h1 {
+                font-size: 8.2vh;
+            }
+
+            .ticket p,
+            .counter p {
+                font-size: 3.2vh;
+            }
+            .counter {
+            background: linear-gradient(-69deg, #F6D400 73%, #ffffff 73%);
+            width: 100%;
+            height: 23.1vh;
+            margin-bottom: 1.5vh;
+        }
+        }
+  
+        @media only screen and (min-width: 460px) and (max-width: 770px) {
+            .media {
+            height: 20vh;
+        }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                display: none;
+            }
+
+            nav {
+                height: 6.9vh;
+            }
+            nav img {
+                width: 7.3vh;
+            }
+            nav a h1{
+                font-size: 2.5vh;
+                line-height: 7vh;
+            }
+            
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1022px) {
+            nav {
+                height: 6.9vh;
+            }
+
+            nav img {
+                width: 8.2vh;
+            }
+
+            nav a h1 {
+                font-size: 2.2vh;
+                line-height: 7.7vh;
+            }
+
+            .queue-title h1 {
+                font-size: 4.5vh;
+                line-height: 9.7vh;
+            }
+
+            .ticket h1,
+            .counter h1 {
+                font-size: 8.2vh;
+            }
+
+            .ticket p,
+            .counter p {
+                font-size: 3.2vh;
+            }
+
+            .counter {
+                background: linear-gradient(-72deg, #F6D400 74%, #ffffff 74%);
+            }
+
+            .date-time-content {
+                width: 38vw;
+            }
+        }
+
+        @media only screen and (min-width: 1023px) and (max-width: 1150px) {
+            nav {
+                height: 6.4vh;
+            }
+
+            nav img {
+                width: 6%;
+            }
+
+            nav a h1 {
+                font-size: 2.8vh;
+                line-height: 7vh;
+            }
+
+            .queue-title h1 {
+                font-size: 4.8vh;
+                line-height: 9.3vh;
+            }
+
+            .ticket h1,
+            .counter h1 {
+                font-size: 11vh;
+            }
+
+            .ticket p,
+            .counter p {
+                font-size: 4vh;
+            }
+
+            .counter {
+                background: linear-gradient(-68deg, #F6D400 75%, #ffffff 75%);
+            }
+
+            .date-time-content {
+                width: 40vw;
+            }
+        }
+
+        @media only screen and (min-width: 1151px) and (max-width: 1438px) {
+
+            nav {
+                height: 8vh;
+            }
+
+            nav img {
+                width: 5%;
+            }
+
+            nav a h1 {
+                font-size: 4vh;
+                line-height: 7vh;
+            }
+
+            .queue-title h1 {
+                font-size: 4.8vh;
+                line-height: 9.3vh;
+            }
+
+            .counter {
+                background: linear-gradient(-68deg, #F6D400 78%, #ffffff 78%);
+            }
+
+            .date-time-content {
+                width: 33vw;
+            }
+
+            .date-time-content h5 {
+                font-size: 3.8vh;
+            }
+        }
+
+        @media only screen and (min-width: 1439px) and (max-width: 1918px) {
+
+            nav {
+                height: 8vh;
+            }
+
+            nav img {
+                width: 4%;
+            }
+
+            nav a h1 {
+                font-size: 3.5vh;
+                line-height: 8.4vh;
+            }
+
+            .queue-title h1 {
+                font-size: 4.8vh;
+                line-height: 9.3vh;
+            }
+
+            .counter {
+                background: linear-gradient(-68deg, #F6D400 78%, #ffffff 78%);
+            }
+            .date-time-content {
+                width: 27vw;
+            }
+            
+        }
+
+        @media only screen and (min-width: 1919px) and (max-width: 3100px) {
+
+            nav {
+                height: 7.5vh;
+            }
+
+            nav img {
+                width: 10vh;
+            }
+
+            nav a h1 {
+                font-size: 3vh;
+                line-height: 8vh;
+            }
+
+            .queue-title h1 {
+                font-size: 5vh;
+                line-height: 9.3vh;
+            }
+
+            .counter {
+                background: linear-gradient(-68deg, #F6D400 80%, #ffffff 80%);
+            }
+            .date-time-content {
+            width: 25vw;
+        }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR---------------------------------------------- -->
+    <nav><a class="navbar-brand" href="#">
+            <img src="img/logo.png" alt="">
+            <h1>AUTOMOBILE ASSOCIATION PHILIPPINES</h1>
+        </a>
+    </nav>
+
+    <!-- media and queueing content-------------------------------->
+    <div class="grid-container">
+
+        <!-- media-------------------->
+        <div class="media">
+            <div class="media-content">
+                <video src="img/compiled.mp4" loop></video>
+            </div>
+        </div>
+
+        <!-- ticket and number------ -->
+        <div class="queue">
+            <div class="queue-header">
+                <div class="queue-title">
+                    <h1>NOW SERVING</h1>
+                </div>
+            </div>
+
+            <!-- ticket no. and counter -->
+            <div class="queue-num">
+                <div class="ticket">
+                    <h1 id="servingPerson"></h1>
+                    <p>Ticket No.</p>
+                </div>
+                <div class="counter">
+                    <h1>01</h1>
+                    <p>Counter</p>
+                </div>
+            </div>
+
+
+            <div class="queue-num">
+                <div class="ticket">
+                    <h1>A02</h1>
+                    <p>Ticket No.</p>
+                </div>
+                <div class="counter">
+                    <h1>02</h1>
+                    <p>Counter</p>
+                </div>
+            </div>
+            <div class="queue-num">
+                <div class="ticket">
+                    <h1>A03</h1>
+                    <p>Ticket No.</p>
+                </div>
+                <div class="counter">
+                    <h1>03</h1>
+                    <p>Counter</p>
+                </div>
+            </div>
+            <div class="queue-num">
+                <div class="ticket">
+                    <h1>A04</h1>
+                    <p>Ticket No.</p>
+                </div>
+                <div class="counter">
+                    <h1>04</h1>
+                    <p>Counter</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="announcement">
+        <p class="note">Please present your ticket number at the respective counter. </p>
+        <img src="img/tow.png" alt="">
+        </div>
+        <div class="date-time">
+            <div></div>
+            <div class="date-time-content">
+                <h3 id="realTime"></h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="nameInput">Enter your name:</label>
+        <input type="text" id="nameInput">
+        <button onclick="joinQueue()">Join Queue</button>
+      </div>
+      
+      <!-- Counter 1 -->
+      <div>
+        <h2>Counter 1 Queue:</h2>
+        <ul id="queueList1"></ul>
+        <p id="servingPerson1"></p>
+        <button onclick="serveNext(0)">Serve Next</button>
+      </div>
+      
+      <!-- Counter 2 -->
+      <div>
+        <h2>Counter 2 Queue:</h2>
+        <ul id="queueList2"></ul>
+        <p id="servingPerson2"></p>
+        <button onclick="serveNext(1)">Serve Next</button>
+      </div>
+      
+      <!-- Counter 3 -->
+      <div>
+        <h2>Counter 3 Queue:</h2>
+        <ul id="queueList3"></ul>
+        <p id="servingPerson3"></p>
+        <button onclick="serveNext(2)">Serve Next</button>
+      </div>
+      
+      <!-- Counter 4 -->
+      <div>
+        <h2>Counter 4 Queue:</h2>
+        <ul id="queueList4"></ul>
+        <p id="servingPerson4"></p>
+        <button onclick="serveNext(3)">Serve Next</button>
+      </div>
+      
+    <script>
+       function updateDateTime() {
+    var currentDate = new Date();
+
+    // Format month in full uppercase
+    var month = currentDate.toLocaleString('en-US', { month: 'long' }).toUpperCase();
+
+    // Format day of the month
+    var day = currentDate.getDate();
+
+    // Format day of the week in full uppercase
+    var dayOfWeek = currentDate.toLocaleString('en-US', { weekday: 'long' }).toUpperCase();
+
+    // Format hours and minutes with AM/PM
+    var time = currentDate.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    var formattedDate = `${month} ${day}, ${currentDate.getFullYear()} ${dayOfWeek} ${time}`;
+    document.getElementById('realTime').innerHTML = formattedDate;
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+
+  // Queue for each counter
+  const queues = [[], [], [], []];
+
+  // Function to join the queue
+  function joinQueue() {
+    const nameInput = document.getElementById('nameInput');
+    const name = nameInput.value.trim();
+
+    if (name !== "") {
+      queues[0].push(name);
+      updateQueueList(0);
+      nameInput.value = "";
+    }
+  }
+
+  // Function to update the queue list
+  function updateQueueList(counterIndex) {
+    const queueList = document.getElementById(`queueList${counterIndex + 1}`);
+    queueList.innerHTML = "";
+
+    queues[counterIndex].forEach((name, index) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${index + 1}. ${name}`;
+      queueList.appendChild(listItem);
+    });
+  }
+
+  // Function to serve the next person in the queue for a specific counter
+  function serveNext(counterIndex) {
+    const servingPerson = document.getElementById(`servingPerson${counterIndex + 1}`);
+
+    if (queues[counterIndex].length > 0) {
+      const nextPerson = queues[counterIndex].shift();
+      servingPerson.textContent = `Serving: ${nextPerson}`;
+      updateQueueList(counterIndex);
+      
+      // Enqueue to the next counter
+      if (counterIndex + 1 < queues.length) {
+        queues[counterIndex + 1].push(nextPerson);
+        updateQueueList(counterIndex + 1);
+      }
+    } else {
+      servingPerson.textContent = "";
+    }
+  }
+</script>
+
+</body>
+</html>
+
+</body>
+
+</html>

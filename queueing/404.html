@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 Not Found</title>
+
+    <style>
+        body {
+            background-image: url(img/building.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .error-message {
+            color: rgb(204, 40, 40);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 0 4px rgba(216, 195, 195, 0.8);
+        }
+
+        .try-again {
+            color: rgb(204, 40, 40);
+            font-size: 1.4rem;
+            text-shadow: 2px 0 4px rgba(216, 195, 195, 0.8);
+        }
+
+        .logo img {
+            margin: auto;
+            margin-top: 5%;
+            display: block;
+            width: 20%;
+        }
+
+        @keyframes moveLeftToRight {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .yellow {
+            margin-top: 7%;
+            z-index: 1;
+            animation: moveLeftToRight 6s linear infinite;
+        }
+
+        .yellow img {
+            width: 24%;
+        }
+
+        @keyframes moveRightToLeft {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .blue {
+            position: absolute;
+            z-index: 0;
+            text-align: right;
+            top: 48%;
+            right: -30%;
+            animation: moveRightToLeft 6s linear infinite;
+            animation-delay: 1s;
+        }
+
+        .blue img {
+            width: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+        <h2 class="error-message">Error 404 Not Found.</h2>
+        <h3 class="try-again">Please try again later.</h3>
+    </div>
+    <div class="logo">
+        <img src="img/logo.png" alt="">
+    </div>
+
+    <div class="yellow">
+        <img src="img/yellowcar.png" alt="">
+    </div>
+
+    <div class="blue">
+        <img src="img/bluecar.png" alt="">
+    </div>
+
+</body>
+
+</html>
